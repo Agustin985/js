@@ -1,5 +1,3 @@
-
-
 const ford = { 
   nombre: "Ford", 
   precio: 25000, 
@@ -13,10 +11,7 @@ const toyota = {
   precio: 28000, 
 };
 
-
 let carrito = [];
-
-
 
 function mostrarOpciones() {
   const opciones =
@@ -48,10 +43,8 @@ function mostrarOpciones() {
       alert("Opción no válida. Por favor, selecciona una opción válida.");
   }
 
-
   mostrarOpciones();
 }
-
 
 function agregarAlCarrito(marca) {
   carrito.push(marca);
@@ -66,7 +59,6 @@ function mostrarCarrito() {
   alert(mensaje);
 }
 
-
 function pagarYSalir() {
   mostrarCarrito();
   const precioTotal = calcularPrecioTotal();
@@ -74,7 +66,6 @@ function pagarYSalir() {
 
   carrito = [];
 }
-
 
 function calcularPrecioTotal() {
   let precioTotal = 0;
@@ -84,7 +75,6 @@ function calcularPrecioTotal() {
   return precioTotal;
 }
 mostrarOpciones();
-
 
 
 
@@ -174,3 +164,61 @@ mostrarOpciones();
    return precioTotal;
  }
  mostrarOpciones();*/
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**parte de dom  */
+
+ /* const carritoElement = document.getElementById('carrito');
+
+function mostrarOpciones() {
+  // ... tu código existente
+
+  mostrarOpciones();
+}
+
+function agregarAlCarrito(marca) {
+  carrito.push(marca);
+  actualizarCarrito();
+  alert(`${marca.nombre} agregado al carrito.`);
+}
+
+function mostrarCarrito() {
+  let mensaje = "Marcas en el carrito:\n";
+  for (let i = 0; i < carrito.length; i++) {
+    mensaje += `${i + 1}. ${carrito[i].nombre} - $${carrito[i].precio}\n`;
+  }
+  alert(mensaje);
+}
+
+function pagarYSalir() {
+  mostrarCarrito();
+  const precioTotal = calcularPrecioTotal();
+  alert(`Precio total del carrito: $${precioTotal}\n¡Gracias por tu compra! Vuelve pronto.`);
+
+  carrito = [];
+  actualizarCarrito();
+}
+
+function calcularPrecioTotal() {
+  let precioTotal = 0;
+  for (let i = 0; i < carrito.length; i++) {
+    precioTotal += carrito[i].precio;
+  }
+  return precioTotal;
+}
+
+function actualizarCarrito() {
+  carritoElement.innerHTML = ""; // Limpiar el contenido anterior
+
+  for (let i = 0; i < carrito.length; i++) {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${carrito[i].nombre} - $${carrito[i].precio}`;
+    carritoElement.appendChild(listItem);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  mostrarOpciones();
+});*/ 

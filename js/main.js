@@ -1,79 +1,44 @@
+// Array de productos
+const productos = [
+  { nombre: "Ford", precio: 25000 },
+  { nombre: "Chevrolet", precio: 22000 },
+  { nombre: "Toyota", precio: 28000 }
+];
 
- 
- const ford = { 
-  nombre: "Ford", 
-  precio: 25000, 
-};
-const chevrolet = { 
-  nombre: "Chevrolet", 
-  precio: 22000, 
-};
-const toyota = { 
-  nombre: "Toyota", 
-  precio: 28000, 
-};
-
+// Carrito de compras
 let carrito = [];
+let total = 0;
 
-function mostrarOpciones() {
-  const opciones =
-    "1. Ford - $25,000\n" +
-    "2. Chevrolet - $22,000\n" +
-    "3. Toyota - $28,000\n" +
-    "4. Ver carrito\n" +
-    "5. Pagar y salir";
-
-  const opcion = prompt(opciones);
-
-  switch (opcion) {
-    case '1':
-      agregarAlCarrito(ford);
-      break;
-    case '2':
-      agregarAlCarrito(chevrolet);
-      break;
-    case '3':
-      agregarAlCarrito(toyota);
-      break;
-    case '4':
-      mostrarCarrito();
-      break;
-    case '5':
-      pagarYSalir();
-      return;
-    default:
-      alert("Opción no válida. Por favor, selecciona una opción válida.");
-  }
-
-  mostrarOpciones();
+// Función para agregar producto al carrito
+function agregarAlCarrito(nombre, precio) {
+  const producto = { nombre, precio };
+  carrito.push(producto);
+  total += precio;
+  actualizarCarrito();
 }
 
-function agregarAlCarrito(marca) {
-  carrito.push(marca);
-  alert(`${marca.nombre} agregado al carrito.`);
-}
-
-function mostrarCarrito() {
-  let mensaje = "Marcas en el carrito:\n";
-  for (let i = 0; i < carrito.length; i = i + 1) {
-    mensaje += `${i + 1}. ${carrito[i].nombre} - $${carrito[i].precio}\n`;
-  }
-  alert(mensaje);
-}
-
-function pagarYSalir() {
-  mostrarCarrito();
-  const precioTotal = calcularPrecioTotal();
-  alert(`Precio total del carrito: $${precioTotal}\n¡Gracias por tu compra! Vuelve pronto.`);
-
+// Función para vaciar el carrito
+function vaciarCarrito() {
   carrito = [];
+  total = 0;
+  actualizarCarrito();
 }
 
-function calcularPrecioTotal() {
-  let precioTotal = 0;
-  for (let i = 0; i < carrito.length; i = i + 1 ) {
-    precioTotal += carrito[i].precio;
-  }
-  return precioTotal;
+// Función para actualizar la interfaz del carrito
+function actualizarCarrito() {
+  const listaCarrito = document.getElementById('listaCarrito');
+  const totalElement = document.getElementById('total');
+
+  // Limpiar la lista
+  listaCarrito.innerHTML = '';
+
+  // Actualizar la lista
+  carrito.forEach((item, index) => {
+      const li = document.createElement('li');
+      li.textContent = `${index + 1}. ${item.nombre} - $${item.precio}`;
+      listaCarrito.appendChild(li);
+  });
+
+  // Actualizar el total
+  totalElement.textContent = total;
 }
-mostrarOpciones();
