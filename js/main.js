@@ -35,7 +35,7 @@ function actualizarCarrito() {
   // Actualizar la lista
   carrito.forEach((item, index) => {
       const li = document.createElement('li');
-      li.textContent = `${index + 1}. ${item.nombre} - $${item.precio}`;
+      li.textContent = ${index + 1}. ${item.nombre} - $${item.precio};
       listaCarrito.appendChild(li);
   });
 
